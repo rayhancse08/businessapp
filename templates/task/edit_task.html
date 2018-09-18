@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Edit Task</h3>
+<form method="post" novalidate>
+{% csrf_token %}
+{% include 'includes/form.html' %}
+<button type="submit" class="btn btn-primary btn-sm">Edit task</button>
+<a href="{% url 'home' %}" class="btn btn-outline-dark btn-sm" role="button">Not Now</a>
+</form>
+
+{% endblock %}

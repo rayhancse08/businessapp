@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <h2 class="mb-3">Confirm deletion</h2>
+  <p class="lead">Are you sure you want to delete this task <strong>"{{ task.name }}"</strong>? There is no going back.</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger btn-sm">Yes, I'm sure</button>
+    <a href="{% url 'task_detail' task.pk %}" class="btn btn-outline-dark btn-sm" role="button">Not Now</a>
+  </form>
+{% endblock %}

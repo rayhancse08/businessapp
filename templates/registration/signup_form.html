@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <div class="row">
+    <div class="col-sm-12" style="padding-left: 25%;padding-right: 25%">
+      <h2>Sign up as Employee</h2>
+      <form method="post" novalidate>
+        {% csrf_token %}
+         {% include 'includes/form.html' %}
+          <br>
+        <button type="submit" class="btn btn-success btn-sm">Sign up</button>
+          <a href="{% url 'home' %}" class="btn btn-outline-dark btn-sm" role="button">Not Now</a>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}

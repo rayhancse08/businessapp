@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+<div class="col-sm-9">
+ <div class="row-col-9" data-spy="scroll" data-target="#buddy-list" data-offset="50">
+
+     <div id="buddy-list">
+     {% for employee in employees %}
+         {{ employee.name }}
+         <br>
+         {{ employee.designation }}
+         {{ employee.department }}
+         <hr>
+
+     {% endfor %}
+     </div>
+ </div>
+</div>
+
+
+{% endblock content %}
+
+
+
+

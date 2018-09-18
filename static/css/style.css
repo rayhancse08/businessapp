@@ -1,0 +1,17 @@
+.row-col{
+    width: 270px;
+    height: 270px;
+    text-align: center;
+    border-style: double;
+    margin-top: 10px;
+
+}
+
+.row-col-9
+{
+    width: 540px;
+    text-align: center;
+    border-style: double;
+    margin-top: 20px;
+    margin-left: 50px;
+}

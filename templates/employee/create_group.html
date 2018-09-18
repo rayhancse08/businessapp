@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-sm-12" style="padding-left: 25%;padding-right: 25%">
+      <h2>Create Group</h2>
+      <form method="post" novalidate>
+        {% csrf_token %}
+         {% include 'includes/form.html' %}
+        <button type="submit" class="btn btn-success">Create Group</button>
+          <a href="{% url 'home' %}" class="btn btn-outline-dark" role="button">Not Now</a>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col-sm-9">
+    <div class="row-col-9">
+        {% for group in groups %}
+
+          <i class="fa fa-group"></i> <a href="{% url 'group_info' group.pk %}">{{ group }}</a>
+            <br>
+          <i class="fa fa-user-secret"></i>  {{ group.creator }}
+            <br>
+            <strong>Members:</strong> {{ group.member.count }}</i>
+            <hr>
+
+        {% endfor %}
+
+    </div>
+    </div>
+{% endblock %}

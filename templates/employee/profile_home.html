@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="col-sm-3">
+<div class="row-col">
+ <strong>Announcement</strong>
+<hr>
+    {% for announce in announcement %}
+
+        <i fa class="fa fa-bullhorn">{{ announce|truncatewords:3 }}</i>  <i class="fa fa-clock-o">{{ announce.time }}</i>
+      {% empty %}
+        No Announcement Yet
+    {% endfor %}
+</div>
+
+<div class="row-col">
+
+<strong>Groups</strong>
+<hr>
+{% for group in groups %}
+
+      <i class="fa fa-group" style="font-size: 18px"></i> <a href="{% url 'group_info' group.pk %}">{{ group.title }}</a>
+        <hr>
+
+    {% endfor %}
+</div>
+</div>
+
+
+<div class="col-sm-3">
+<div class="row-col">
+<strong>Pending Jobs</strong>
+<hr>
+    {% for task in assigning_task %}
+   <i class="fa fa-tasks"></i><a href="{% url 'task_detail' task.pk %}"> {{ task }}</a>
+        <i class="fa fa-clock-o">{{ task.assign_time }}</i>
+        <hr>
+
+    {% endfor %}
+
+</div>
+
+    <div id="training" class="row-col">
+
+     <strong>Training</strong>
+        <hr>
+
+    </div>
+</div>
+
+
+<div class="col-sm-3">
+<div id="assign-job" class="row-col">
+<strong>Assigned Jobs</strong>
+<hr>
+
+    {% for task in creating_tasks %}
+        <i class="fa fa-tasks"></i> <a href="{% url 'task_detail' task.pk %}"> {{ task }}</a>
+<br>
+        <i class="fa fa-check"></i>{{ task.status }}
+        <hr>
+    {% endfor %}
+
+</div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

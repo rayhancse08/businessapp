@@ -1,37 +1,23 @@
 {% extends 'base.html' %}
-{% load pinax_messages_tags %}
+
 {% block title %}
     {{ group_info }}
 {% endblock %}
 {% block content %}
 
-<div class="row">
-<div class="col-sm-4">
-     <nav class="navbar bg-light">
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <button class="btn btn-link" data-toggle="collapse" data-target="#members"> Members</button>
-    </li>
-       <li class="nav-item">
-      <button class="btn btn-link" data-toggle="collapse" data-target="#task"> Task</button>
-    </li>
-      <li class="nav-item">
-      <button class="btn btn-link" data-toggle="collapse" data-target="#conversation"> Conversation</button>
-    </li>
-      <li class="nav-item">
-          <a href="{% url 'delete_member' group_info.pk login_user.id %}" class="btn btn-link"> Leave from group</a>
-      </li>
-  </ul>
-</nav>
-</div>
-<div class="col-sm-6">
 
-<div id="members" class="collapse text-center">
+<div class="col-sm-9">
+
+<div id="members" class="row-col-9">
+
+<strong>Admin:</strong>
+    {{ group_info.creator }}
+{% if group_info.creator.user == login_user %}
+<a href="{% url 'delete_group' group_info.pk %}"> <i class="fa fa-trash"> </i></a>
+{% endif %}
+<hr>
 <h6>Members</h6>
-<hr>
-Admin
-    <strong>{{ group_info.creator }}</strong>
-<hr>
+
 {% for person in group_info.member.all %}
 
     {% ifnotequal person.user|stringformat:"s" login_user|stringformat:"s" %}
@@ -50,20 +36,13 @@ Admin
 
     {% endifnotequal %}
     {% endfor %}
+{% if group_info.creator.user|stringformat:"s" == login_user|stringformat:"s" %}
 <i class="fa fa-plus-circle"></i> <a href="{% url 'add_member' group_info.pk %}">Add Member </a>
+
+{% endif %}
+</div>
 </div>
 
-<div id="task" class="collapse text-center">
-<p>Task will be displayed</p>
-</div>
-
-
-<div id="conversation" class="collapse text-center">
-<p>Conversation will be displayed</p>
-</div>
-
-</div>
-</div>
 
 
 {% endblock %}

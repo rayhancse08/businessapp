@@ -30,5 +30,28 @@ class Announcement(models.Model):
     def __str__(self):
         return self.title
 
+class Training(models.Model):
+    title=models.CharField(max_length=100)
+    topic = models.TextField(max_length=2000, null=True)
+    schedule_by=models.ForeignKey(Employee,on_delete=models.CASCADE,related_name='schedule_by')
+    schedule_to=models.ForeignKey(Employee,on_delete=models.CASCADE,related_name='schedule_to')
+    time=models.DateTimeField(auto_now_add=True)
+    schedule_time=models.DateTimeField(null=True,blank=True)
+
+    def __str__(self):
+        return self.title
+
+class Meeting(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField(max_length=2000, null=True)
+    arranged_by = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='arranged_by')
+    arranged_for = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='arranged_for')
+    time = models.DateTimeField(auto_now_add=True)
+    meeting_time = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+
 
 

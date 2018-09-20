@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'crispy_forms',
     'rest_framework',
+    'datetimepicker',
 "pinax.messages",
     'employee',
     'task',
@@ -123,7 +124,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 LOGIN_URL = 'login'
 
@@ -138,3 +139,9 @@ LOGOUT_REDIRECT_URL = 'home'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+
+FORMAT_MODULE_PATH = [
+    'businessapp.formats',
+
+]

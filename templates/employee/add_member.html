@@ -3,14 +3,15 @@
 
 
 {% block content %}
-  <div class="row">
-    <div class="col-sm-12" style="padding-left: 25%;padding-right: 25%">
+  <div class="col-sm-9">
+    <div class="row-col-9">
       <h2>Add Member</h2>
       <form method="post" novalidate>
         {% csrf_token %}
           {{ form }}
-          <br>
-        <button type="submit" class="btn btn-success">Add to Member</button>
+
+        <button type="submit" class="btn btn-success btn-sm">Add to Member</button>
+          <a href="{% url 'group_info' group_id %}" class="btn btn-outline-dark btn-sm" role="button">Not Now</a>
       </form>
     </div>
   </div>

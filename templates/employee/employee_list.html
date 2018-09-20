@@ -10,10 +10,10 @@
 
      <div id="buddy-list">
      {% for employee in employees %}
-         {{ employee.name }}
+         <i class="fa fa-user-circle-o"></i> {{ employee.name }}
          <br>
-         {{ employee.designation }}
-         {{ employee.department }}
+         {{ employee.designation }}, {{ employee.department }}
+
          <hr>
 
      {% endfor %}

@@ -90,13 +90,16 @@
 
 
 <li class="nav-item">
-      <a href="{% url 'create_group' %}" class="nav-link btn btn-outline-info">Jobs</a>
+      <a href="{% url 'tasks' %}" class="nav-link btn btn-outline-info">Jobs</a>
     </li>
 <li class="nav-item">
-      <a href="{% url 'create_group' %}" class="nav-link btn btn-outline-info">Announcement </a>
+      <a href="{% url 'announcements' %}" class="nav-link btn btn-outline-info">Announcement </a>
     </li>
       <li class="nav-item">
-      <a href="{% url 'create_group' %}" class="nav-link btn btn-outline-info">Training</a>
+      <a href="{% url 'trainings' %}" class="nav-link btn btn-outline-info">Training</a>
+    </li>
+        <li class="nav-item">
+      <a href="{% url 'meetings' %}" class="nav-link btn btn-outline-info">Meeting</a>
     </li>
 
   </ul>
@@ -124,11 +127,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 
-<script type="text/javascript">
-      $(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-      })
-    </script>
+
+
 
 
 

@@ -9,9 +9,33 @@
 
 .row-col-9
 {
-    width: 540px;
+    width: 640px;
     text-align: center;
     border-style: double;
     margin-top: 20px;
     margin-left: 50px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+
+.row-col-5{
+
+    width: 450px;
+    text-align: center;
+    border-style: double;
+    margin-top: 20px;
+
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.row-col-4{
+    width: 360px;
+    text-align: center;
+    border-style: double;
+    margin-top: 20px;
+
+    padding-bottom: 20px;
+    padding-top: 20px;
 }

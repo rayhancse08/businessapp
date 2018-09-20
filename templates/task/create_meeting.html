@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="col-sm-9">
+<div class="row-col-9">
+    <h4>Arrange Meeting</h4>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {% include 'includes/form.html' %}
+        <button type="submit" class="btn btn-success btn-sm">Arrange Meeting</button>
+        <a href="{% url 'meetings' %}" class="btn btn-outline-dark btn-sm" role="button"> Not Now</a>
+    </form>
+</div>
+</div>
+
+{% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponse,get_object_or_404,redirect
 from .models import Employee,Department,Group
-from django.views.generic import CreateView,TemplateView,DetailView,View,ListView
+from django.views.generic import CreateView,TemplateView,DetailView,View,ListView,DeleteView
 from .forms import EmployeeForm,SignupForm,GroupForm,MemberForm
 from django.urls import reverse_lazy
 from .models import Employee
@@ -67,8 +67,11 @@ class HomeView(TemplateView):
         context['groups']=context['profile'].groups_member.all()
         context['creating_tasks']=context['profile'].tasks_assign_by.all()
         context['assigning_task']=context['profile'].tasks_assign_to.all()
-        context['announcement']=context['profile'].announced_to.order_by('-time')
+        context['announcement']=context['profile'].announced_to.order_by('-time')[:2]
+        context['trainings']=context['profile'].schedule_to.all()
+        context['meetings'] = context['profile'].arranged_for.all()
         return context
+
 
 @method_decorator(login_required,name='dispatch')
 class CreateGroupView(CreateView):
@@ -117,6 +120,19 @@ class GroupDetailView(DetailView):
         context['login_user']=self.request.user
         return context
 
+
+@method_decorator(login_required,name='dispatch')
+class GroupDeleteView(DeleteView):
+    model = Group
+    context_object_name = 'group'
+    pk_url_kwarg = 'group_id'
+    template_name = 'employee/group_delete_confirm.html'
+    success_url = reverse_lazy('group_list')
+
+
+
+
+
 @method_decorator(login_required,name='dispatch')
 class GroupMemberDeleteView(View):
 
@@ -137,7 +153,11 @@ class GroupMemberAddView(CreateView):
     form_class = MemberForm
     template_name ='employee/add_member.html'
     model = Group
-    #success_url = reverse_lazy('home')
+
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context['group_id']=self.kwargs['group_id']
+        return context
 
     def get_form_kwargs(self,**kwargs):
         kwargs=super(GroupMemberAddView,self).get_form_kwargs(**kwargs)

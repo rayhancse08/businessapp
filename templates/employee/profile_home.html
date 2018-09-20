@@ -10,7 +10,12 @@
 <hr>
     {% for announce in announcement %}
 
-        <i fa class="fa fa-bullhorn">{{ announce|truncatewords:3 }}</i>  <i class="fa fa-clock-o">{{ announce.time }}</i>
+        <i fa class="fa fa-bullhorn"></i><strong>{{ announce|truncatewords:3 }}</strong>
+        <br>
+        <i fa class="fa fa-envelope-open"></i>{{ announce.description }}
+        <br>
+          <i class="fa fa-clock-o">{{ announce.time }}</i>
+        <hr>
       {% empty %}
         No Announcement Yet
     {% endfor %}
@@ -47,6 +52,16 @@
 
      <strong>Training</strong>
         <hr>
+        {% for training in trainings %}
+        <i class="fa fa-graduation-cap"></i> {{ training.title }}
+            <br>
+           <strong>Topic: </strong>{{ training.topic }}
+            <br>
+            <i class="fas fa-chalkboard-teacher"></i> {{ training.schedule_by }}
+            <br>
+            <i class="fa fa-clock-o"></i>{{ training.schedule_time }}
+            <hr>
+        {% endfor %}
 
     </div>
 </div>
@@ -62,6 +77,23 @@
 <br>
         <i class="fa fa-check"></i>{{ task.status }}
         <hr>
+    {% endfor %}
+
+</div>
+
+<div id="upcoming-event" class="row-col">
+<strong>Upcoming Meeting</strong>
+<hr>
+
+{% for meeting in meetings %}
+    {{ meeting.title }}
+    <br>
+    {{ meeting.description }}
+    <br>
+    {{ meeting.arranged_by }}
+    <br>
+    {{ meeting.meeting_time }}
+<hr>
     {% endfor %}
 
 </div>

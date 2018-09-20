@@ -3,31 +3,32 @@
 
 {% block content %}
    <br>
-    <div class="row">
-    <div class="col-sm-12 text-center">
+    <div class="col-sm-9">
+    <div class="row-col-9">
+    <h5>Job Details</h5>
         <table class="table table-bordered">
             <tr>
-                <th>Task Name</th>
+                <th>Title</th>
                 <td>{{ task.name }}</td>
             </tr>
              <tr>
-                <th>Task Description</th>
+                <th>Description</th>
                 <td>{{ task.description }}</td>
             </tr>
             <tr>
-                <th>Task Assigned By</th>
+                <th>Assigned By</th>
                 <td>{{ task.assign_by }}</td>
             </tr>
             <tr>
-                <th>Task Assigned To</th>
+                <th>Assigned To</th>
                 <td>{{ task.assign_to }}</td>
             </tr>
             <tr>
-                <th>Task Assigned Time</th>
+                <th>Assigned Time</th>
                 <td>{{ task.assign_time }}</td>
             </tr>
             <tr>
-                <th>Task Status</th>
+                <th>Status</th>
                 <td>{{ task.status }}</td>
             </tr>
             <tr>

@@ -3,13 +3,15 @@
 {% block content %}
     <div class="col-sm-9">
     <div class="row-col-9">
+    <a href="{% url 'create_group' %}" class="btn btn-success btn-sm" role="button"><i class="fa fa-plus-circle">Create Group</i> </a>
+    <hr>
         {% for group in groups %}
 
           <i class="fa fa-group"></i> <a href="{% url 'group_info' group.pk %}">{{ group }}</a>
             <br>
           <i class="fa fa-user-secret"></i>  {{ group.creator }}
             <br>
-            <strong>Members:</strong> {{ group.member.count }}</i>
+            <strong>Members:</strong> {{ group.member.count }}
             <hr>
 
         {% endfor %}

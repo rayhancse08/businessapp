@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="col-sm-5">
+<div class="row-col-5">
+    <h4>Received Announcement</h4>
+<hr>
+    {% for announcemet in received_announcements %}
+     <i class="fa fa-bullhorn"></i> {{ announcemet.title }}
+        <br>
+       <i class="fa fa-envelope-square"></i> {{ announcemet.description }}
+        <br>
+        <i class="fa fa-user"></i> {{ announcemet.announced_by }}
+        <br>
+        <i class="fa fa-clock-o"></i> {{ announcemet.time }}
+        <hr>
+       {% empty %}
+        No Received Announcement Yet
+    {% endfor %}
+</div>
+</div>
+
+    <div class="col-sm-4">
+<div class="row-col-4">
+    <h4>Sent Announcement</h4>
+<a href="{% url 'create_announcement'%}" class="btn btn-success btn-sm" role="button">Create Announcement</a>
+<hr>
+    {% for announcement in sent_announcements %}
+     <i class="fa fa-bullhorn"></i> {{ announcement.title }}
+        <a href="{% url 'delete_announcement' announcement.pk %}"><i class="fa fa-trash"></i> </a>
+        <a href="{% url 'update_announcement' announcement.pk %}"><i class="fa fa-edit"></i> </a>
+
+        <br>
+       <i class="fa fa-envelope-square"></i> {{ announcement.description }}
+        <br>
+        <i class="fa fa-user"></i> {{ announcement.announced_to }}
+        <br>
+        <i class="fa fa-clock-o"></i> {{ announcement.time }}
+        <hr>
+{% empty %}
+        No Announcement Sent Yet.
+    {% endfor %}
+</div>
+</div>
+
+{% endblock %}

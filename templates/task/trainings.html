@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-sm-5">
+<div class="row-col-5">
+<h4>Participate Training</h4>
+    <hr>
+    {% for training in training_participates %}
+     <i class="fa fa-graduation-cap"></i> {{ training.title }}
+            <br>
+           <strong>Topic: </strong>{{ training.topic }}
+            <br>
+            <i class="fas fa-chalkboard-teacher"></i> {{ training.schedule_by }}
+            <br>
+            <i class="fa fa-clock-o"></i>{{ training.schedule_time }}
+            <hr>
+        {% empty %}
+        No Participate Training Yet.
+    {% endfor %}
+</div>
+</div>
+
+    <div class="col-sm-4">
+<div class="row-col-4">
+<h4>Arrange Training</h4>
+<a href="{% url 'create_training' %}" class="btn btn-success btn-sm" role="button">Arrange Training</a>
+    <hr>
+    {% for training in training_arrangements %}
+     <i class="fa fa-graduation-cap"></i> {{ training.title }} <a href="{% url 'delete_training' training.pk %}"><i class="fa fa-trash"></i> </a>
+        <a href="{% url 'update_training' training.pk %}"><i class="fa fa-edit"></i> </a>
+
+            <br>
+           <strong>Topic: </strong>{{ training.topic }}
+            <br>
+            <i class="fas fa-chalkboard-teacher"></i> {{ training.schedule_by }}
+            <br>
+            <i class="fa fa-clock-o"></i>{{ training.schedule_time }}
+            <hr>
+        {% empty %}
+        No Arrange Training Yet
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

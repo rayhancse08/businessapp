@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-sm-9">
+<div class="row-col-9">
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <h4>Create Announcement</h4>
+        {% include 'includes/form.html' %}
+        <button type="submit" class="btn btn-success btn-sm">Send Announcement</button>
+        <a href="{% url 'announcements' %}" class="btn btn-outline-dark btn-sm" role="button">Not Now</a>
+    </form>
+</div>
+</div>
+
+{% endblock %}

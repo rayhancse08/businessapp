@@ -3,14 +3,14 @@
 {% load widget_tweaks %}
 
 {% block content %}
-  <div class="row">
-    <div class="col-sm-12" style="padding-left: 25%;padding-right: 25%">
+  <div class="col-sm-9">
+    <div class="row-col-9">
       <h2>Create Group</h2>
       <form method="post" novalidate>
         {% csrf_token %}
          {% include 'includes/form.html' %}
-        <button type="submit" class="btn btn-success">Create Group</button>
-          <a href="{% url 'home' %}" class="btn btn-outline-dark" role="button">Not Now</a>
+        <button type="submit" class="btn btn-success btn-sm">Create Group</button>
+          <a href="{% url 'group_list' %}" class="btn btn-outline-dark btn-sm" role="button">Not Now</a>
       </form>
     </div>
   </div>

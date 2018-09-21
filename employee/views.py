@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from datetime import datetime, timedelta
 # Create your views here.
 
 def home(request):
@@ -61,15 +62,17 @@ class HomeView(TemplateView):
 
 
     def get_context_data(self, **kwargs):
+        one_week_after = datetime.today() + timedelta(days=7)
         context=super().get_context_data(**kwargs)
         context['profile']=get_object_or_404(Employee,user=self.request.user)
         context['buddy_list']=Employee.objects.exclude(user=self.request.user)
-        context['groups']=context['profile'].groups_member.all()
-        context['creating_tasks']=context['profile'].tasks_assign_by.all()
-        context['assigning_task']=context['profile'].tasks_assign_to.all()
+        context['groups']=context['profile'].groups_member.all()[0:5]
+        context['creating_tasks']=context['profile'].tasks_assign_by.filter(complete_time__gte=datetime.today(),complete_time__lte=one_week_after)
+        context['assigning_task']=context['profile'].tasks_assign_to.filter(complete_time__gte=datetime.today(),complete_time__lte=one_week_after).\
+            exclude(status='Done')
         context['announcement']=context['profile'].announced_to.order_by('-time')[:2]
-        context['trainings']=context['profile'].schedule_to.all()
-        context['meetings'] = context['profile'].arranged_for.all()
+        context['trainings']=context['profile'].schedule_to.filter(schedule_time__gte=datetime.today(),schedule_time__lte=one_week_after)
+        context['meetings'] = context['profile'].arranged_for.filter(meeting_time__gte=datetime.today(),meeting_time__lte=one_week_after)
         return context
 
 

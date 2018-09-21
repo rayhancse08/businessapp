@@ -7,7 +7,8 @@
 
     <title>
 
-        {% block title %} Human Resource and Job Management{% endblock %}
+        {% block title %} Human Resource and Job Management
+        {% endblock %}
 
     </title>
 
@@ -43,14 +44,18 @@
    <hr>
     <div class="row">
         {% if user.is_authenticated %}
-    <div class="col-sm-6 text-left">
+
+    <div class="col-sm-8 text-left">
+    <i class="fa fa-calendar"><strong> {% now "jS M Y h:i A" %} </strong></i>
         <i class="fa fa-user-circle"> {{ user.employee}}</i>
     <strong>Department:</strong> {{  user.employee.department }}
     <i class="fa fa-tasks"> Role: {{  user.employee.designation }}</i>
+
     </div>
-    <div class="col-sm-6 text-right">
+    <div class="col-sm-4 text-right">
 
     Logged in as <strong>{{ user }}</strong>. <a href="{% url 'logout' %}"> <i class="fa fa-sign-out" style="font-size: 16px"> Log out </i></a>
+
               {% else %}
 <a href="{% url 'login' %}"><i class="fa fa-sign-in" style="font-size: 16px"> Log In   </i></a>
     <a href="{% url 'signup' %}"><i class="fa fa-user-plus" style="font-size: 16px"> Sign Up</i></a>
@@ -127,7 +132,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 
-
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 
 
 

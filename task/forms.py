@@ -3,10 +3,15 @@ from .models import Task,Announcement,Training,Meeting
 from employee.models import Employee
 
 
+
 class TaskCreatorForm(forms.ModelForm):
     class Meta:
         model=Task
         exclude=('group_task','assign_by')
+        widgets = {
+            'complete_time': forms.DateInput(attrs={'type': 'date'}),
+            'description': forms.Textarea(attrs={'rows': 5, 'placeholder': 'Job Description'})
+        }
 
     def __init__(self,*args,**kwargs):
         login_user=kwargs.pop('login_user')
@@ -35,7 +40,7 @@ class TrainingForm(forms.ModelForm):
         model=Training
         fields=['title','topic','schedule_to','schedule_time']
         widgets = {
-            'schedule_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'schedule_time': forms.DateTimeInput(attrs={'class': 'datetime-local'}),
             'topic': forms.Textarea(attrs={'rows':5,'placeholder':'Training Topic'})
         }
 

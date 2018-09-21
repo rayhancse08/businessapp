@@ -134,6 +134,19 @@ class AnnouncementView(TemplateView):
 
 
 @method_decorator(login_required,name='dispatch')
+class AnnouncementDetailView(DetailView):
+    model = Announcement
+    context_object_name = 'announcement'
+    pk_url_kwarg = 'announcement_id'
+    template_name = 'task/announcement_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context['login_user']=self.request.user
+        return context
+
+
+@method_decorator(login_required,name='dispatch')
 class DeleteAnnouncementView(DeleteView):
     model = Announcement
     template_name = 'task/delete_announcement_confirm.html'
@@ -184,6 +197,19 @@ class TrainingView(TemplateView):
         context['profile'] = get_object_or_404(Employee, user=self.request.user)
         context['training_arrangements'] = context['profile'].schedule_by.all()
         context['training_participates'] = context['profile'].schedule_to.all()
+        return context
+
+
+@method_decorator(login_required,name='dispatch')
+class TrainingDetailView(DetailView):
+    model = Training
+    context_object_name = 'training'
+    pk_url_kwarg = 'training_id'
+    template_name = 'task/training_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context['login_user']=self.request.user
         return context
 
 
@@ -257,6 +283,20 @@ class MeetingView(TemplateView):
         context['meeting_arrangements'] = context['profile'].arranged_by.all()
         context['meeting_participates'] = context['profile'].arranged_for.all()
         return context
+
+
+@method_decorator(login_required,name='dispatch')
+class MeetingDetailView(DetailView):
+    model = Meeting
+    context_object_name = 'meeting'
+    pk_url_kwarg = 'meeting_id'
+    template_name = 'task/meeting_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context['login_user']=self.request.user
+        return context
+
 
 @method_decorator(login_required,name='dispatch')
 class CreateMeetingView(CreateView):

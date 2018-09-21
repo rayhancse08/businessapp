@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+   <br>
+    <div class="col-sm-9">
+    <div class="row-col-9">
+    <h5>Training Details</h5>
+        <table class="table table-bordered">
+            <tr>
+                <th>Title</th>
+                <td>{{ training.title }}</td>
+            </tr>
+             <tr>
+                <th>Topic</th>
+                <td>{{ training.topic }}</td>
+            </tr>
+            <tr>
+                <th>Arranged By</th>
+                <td>{{ training.schedule_by}}</td>
+            </tr>
+            <tr>
+                <th>Training For</th>
+                <td>{{ training.schedule_to }}</td>
+            </tr>
+            <tr>
+                <th>Schedule Time</th>
+                <td>{{ training.schedule_time }}</td>
+            </tr>
+
+
+        </table>
+         {% if training.schedule_by.user == login_user %}
+        <a href="{% url 'update_training' training.pk %}" class="btn btn-primary btn-sm" role="button">Update Training </a>
+             <a href="{% url 'delete_training' training.pk %}" class="btn btn-info btn-sm" role="button">Delete Training </a>
+
+         {% endif %}
+
+
+    <a href="{% url 'home' %}" class="btn btn-outline-dark btn-sm" role="button">OK </a>
+
+
+    </div>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}

@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'crispy_forms',
     'rest_framework',
-    'datetimepicker',
-"pinax.messages",
+     "pinax.messages",
+
     'employee',
     'task',
 ]
@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'businessapp.urls'
@@ -118,13 +119,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Dhaka'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 LOGIN_URL = 'login'
 
@@ -141,7 +142,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 
-FORMAT_MODULE_PATH = [
-    'businessapp.formats',
 
-]
+
+
+'''
+from django.conf.global_settings import DATETIME_INPUT_FORMATS, DATE_INPUT_FORMATS
+DATE_INPUT_FORMATS += ("%d-%m-%Y",)
+DATETIME_INPUT_FORMATS += ("%d-%m-%Y %H:%M:%S",)
+'''

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+   <br>
+    <div class="col-sm-9">
+    <div class="row-col-9">
+    <h5>Announcement Details</h5>
+        <table class="table table-bordered">
+            <tr>
+                <th>Title</th>
+                <td>{{ announcement.title }}</td>
+            </tr>
+             <tr>
+                <th>Description</th>
+                <td>{{ announcement.description }}</td>
+            </tr>
+            <tr>
+                <th>Announce By</th>
+                <td>{{ announcement.announced_by}}</td>
+            </tr>
+            <tr>
+                <th>Announce To</th>
+                <td>{{ announcement.announced_to }}</td>
+            </tr>
+            <tr>
+                <th>Announce Time</th>
+                <td>{{ announcement.time }}</td>
+            </tr>
+
+
+        </table>
+         {% if announcement.announced_by == login_user %}
+        <a href="{% url 'update_announcement' announcement.pk %}" class="btn btn-primary btn-sm" role="button">Update Announcement </a>
+             <a href="{% url 'delete_announcement' announcement.pk %}" class="btn btn-info btn-sm" role="button">Delete Announcement </a>
+
+         {% endif %}
+
+
+    <a href="{% url 'home' %}" class="btn btn-outline-dark btn-sm" role="button">OK </a>
+
+
+    </div>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}

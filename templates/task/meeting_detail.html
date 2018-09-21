@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+   <br>
+    <div class="col-sm-9">
+    <div class="row-col-9">
+    <h5>Meeting Details</h5>
+        <table class="table table-bordered">
+            <tr>
+                <th>Title</th>
+                <td>{{ meeting.title }}</td>
+            </tr>
+             <tr>
+                <th>Topic</th>
+                <td>{{ meeting.description }}</td>
+            </tr>
+            <tr>
+                <th>Arranged By</th>
+                <td>{{ meeting.arranged_by}}</td>
+            </tr>
+            <tr>
+                <th>Arranged For</th>
+                <td>{{ meeting.arranged_for }}</td>
+            </tr>
+            <tr>
+                <th>Schedule Time</th>
+                <td>{{ meeting.meeting_time }}</td>
+            </tr>
+
+
+        </table>
+         {% if meeting.arranged_by.user == login_user %}
+        <a href="{% url 'update_meeting' meeting.pk %}" class="btn btn-primary btn-sm" role="button">Update Meeting </a>
+             <a href="{% url 'delete_meeting' meeting.pk %}" class="btn btn-info btn-sm" role="button">Delete Meeting </a>
+
+         {% endif %}
+
+
+    <a href="{% url 'home' %}" class="btn btn-outline-dark btn-sm" role="button">OK </a>
+
+
+    </div>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}

@@ -25,7 +25,7 @@ class Employee(models.Model):
     phone=models.CharField(max_length=100,default='')
     email=models.EmailField(null=True)
     department=models.ForeignKey(Department,on_delete=models.CASCADE,related_name='employees',null=True)
-    designation=models.CharField(max_length=20,choices=designation_choice,default="Engineer")
+    designation=models.CharField(max_length=20,choices=designation_choice,null=True)
 
     def __str__(self):
         return self.name

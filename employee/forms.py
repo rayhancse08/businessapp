@@ -19,6 +19,9 @@ class EmployeeForm(forms.ModelForm):
     class Meta:
         model=Employee
         exclude=('user',)
+        widgets = {
+            'date_of_birth': forms.DateInput(attrs={'type': 'date'}),
+        }
 
 
 class GroupForm(forms.ModelForm):

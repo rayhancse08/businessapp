@@ -4,7 +4,7 @@
 
 
 {% block content %}
-<div class="col-sm-9">
+
 <div class="row-col-9">
     <form method="post" novalidate>
         {% csrf_token %}
@@ -13,7 +13,7 @@
         <a href="{% url 'trainings' %}" class="btn btn-outline-dark btn-sm" role="button"> Not Now</a>
     </form>
 </div>
-</div>
+
 
 {% endblock %}
 

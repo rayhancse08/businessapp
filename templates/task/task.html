@@ -2,10 +2,11 @@
 
 {% block content %}
 
-<div class="col-sm-4">
-<div class="row-col-4">
-    <h5>Created Task</h5>
-<a href="{% url 'create_task' %}" class="btn btn-success btn-sm" role="button">Create Job</a>
+    <div class="row">
+    <div class="col-sm-6">
+    <div class="row-col-6">
+          <h5 style="text-align: center">Created Task</h5>
+<a href="{% url 'create_task' %}" class="btn btn-success btn-sm" role="button"><i class="fa fa-plus-circle"></i> Create Job</a>
 <hr>
     {% for task in creating_task %}
 <i class="fa fa-tasks"></i> <a href="{% url 'task_detail' task.pk %}">{{ task.name }}</a>
@@ -13,12 +14,13 @@
        <strong>Working Status:</strong> {{ task.status }}
 <hr>
     {% endfor %}
-</div>
-</div>
-    <div class="col-sm-5">
-    <div class="row-col-5">
 
-        <h5>Assigned Task</h5>
+    </div>
+
+    </div>
+    <div class="col-sm-6">
+        <div class="row-col-6">
+            <h5>Assigned Task</h5>
 <hr>
     {% for task in assigning_task %}
 <i class="fa fa-tasks"></i> <a href="{% url 'task_detail' task.pk %}">{{ task.name }}</a>
@@ -26,10 +28,12 @@
        <strong>Working Status:</strong> {{ task.status }}
 <hr>
     {% endfor %}
-
+        </div>
+    </div>
     </div>
 
 
-    </div>
+
+
 
 {% endblock %}

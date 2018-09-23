@@ -1,26 +1,51 @@
 {% extends 'base.html' %}
 
-
+{% load widget_tweaks %}
 {% block content %}
 
 
+<div class="row-col-9">
+    <h4>Buddy List</h4>
+ <hr>
 
-<div class="col-sm-9">
- <div class="row-col-9" data-spy="scroll" data-target="#buddy-list" data-offset="50">
+ <form method="get" class="form-inline">
 
+
+
+          <div class="col-sm-3" >
+              {{ employees.form.name.label_tag }}
+          </div>
+<div class="col-sm-6">
+
+          {% render_field employees.form.name class="form-control" %}
+
+</div>
+
+<div class="col-sm-3">
+    <button type="submit" class="btn btn-primary">
+        <span class="fa fa-search"></span> Search
+      </button>
+
+</div>
+
+
+
+
+ </form>
+
+<hr>
+<div class="col-sm-12">
      <div id="buddy-list">
-     {% for employee in employees %}
+     {% for employee in employees.qs %}
          <i class="fa fa-user-circle-o"></i> {{ employee.name }}
          <br>
          {{ employee.designation }}, {{ employee.department }}
 
          <hr>
-
      {% endfor %}
      </div>
  </div>
 </div>
-
 
 {% endblock content %}
 

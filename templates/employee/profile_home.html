@@ -3,12 +3,12 @@
 {% block content %}
 
 
+<div class="row">
 
-<div class="col-sm-3">
-<div class="row-col">
+<div class="col-sm-4">
+<div class="row-col-4">
  <h4> <span class="badge badge-pill badge-info">Announcement</span></h4>
-
-<hr>
+    <hr>
     {% for announce in announcement %}
 
         <span class="badge badge-pill badge-info">announce</span> <i fa class="fa fa-bullhorn"></i><a href="{% url 'announcement_detail' announce.pk %}" data-toggle="tooltip" title="Announce Details"> {{ announce|truncatewords:3 }}</a>
@@ -21,28 +21,11 @@
         <span class="badge badge-pill badge-warning"> No Announcement Yet</span>
     {% endfor %}
 
-
-</div>
-
-<div class="row-col">
-
-<h4> <span class="badge badge-pill badge-info">Groups </span></h4>
-
-<hr>
-{% for group in groups %}
-
-      <i class="fa fa-group" style="font-size: 18px"></i> <a href="{% url 'group_info' group.pk %}" data-toggle="tooltip" title="Group Details">{{ group.title }}</a>
-        <hr>
-{% empty %}
-    <span class="badge badge-pill badge-warning"> No Group Yet</span>
-    {% endfor %}
 </div>
 </div>
-
-
-<div class="col-sm-3">
-<div class="row-col">
-<h4> <span class="badge badge-pill badge-info">Unaccomplished Jobs</span> </h4>
+    <div class="col-sm-4">
+        <div class="row-col-4">
+            <h4> <span class="badge badge-pill badge-info">Unaccomplished Jobs</span> </h4>
 
 
 <hr>
@@ -59,33 +42,11 @@
         <span class="badge badge-pill badge-warning"> No Unaccomplished Job Yet</span>
 
     {% endfor %}
-
+        </div>
 </div>
-
-    <div id="training" class="row-col">
-
-     <h4> <span class="badge badge-pill badge-info">Trainings</span></h4>
-
-        <hr>
-        {% for training in trainings %}
-     <span class="badge badge-pill badge-info">training</span>   <i class="fa fa-graduation-cap"></i> <a href="{% url 'training_detail' training.pk %}" data-toggle="tooltip" title="Training Details"> {{ training.title|truncatewords:3 }}</a>
-            <br>
-
-           <span class="badge badge-pill badge-dark">trainer</span> <i class="fas fa-chalkboard-teacher"></i> {{ training.schedule_by }}
-            <br>
-            <span class="badge badge-pill badge-secondary">time</span> <i class="fa fa-calendar"></i> {{ training.schedule_time }}
-            <hr>
-            {% empty %}
-            <span class="badge badge-pill badge-warning"> No Training Yet</span>
-        {% endfor %}
-
-    </div>
-</div>
-
-
-<div class="col-sm-3">
-<div id="assign-job" class="row-col">
-<h4> <span class="badge badge-pill badge-info">Created Jobs</span></h4>
+<div class="col-sm-4">
+    <div class="row-col-4">
+        <h4> <span class="badge badge-pill badge-info">Created Jobs</span></h4>
 
 
 <hr>
@@ -104,11 +65,52 @@
         {% empty %}
         <span class="badge badge-pill badge-warning"> No Assigning Job Yet</span>
     {% endfor %}
-
+    </div>
 </div>
 
-<div id="upcoming-meeting" class="row-col">
-<h4> <span class="badge badge-pill badge-info">Meetings</span></h4>
+
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="row-col-4">
+
+            <h4> <span class="badge badge-pill badge-info">Groups </span></h4>
+
+<hr>
+{% for group in groups %}
+
+      <i class="fa fa-group" style="font-size: 18px"></i> <a href="{% url 'group_info' group.pk %}" data-toggle="tooltip" title="Group Details">{{ group.title }}</a>
+        <hr>
+{% empty %}
+    <span class="badge badge-pill badge-warning"> No Group Yet</span>
+    {% endfor %}
+    </div>
+
+        </div>
+
+
+    <div class="col-sm-4">
+        <div class="row-col-4">
+             <h4> <span class="badge badge-pill badge-info">Trainings</span></h4>
+
+        <hr>
+        {% for training in trainings %}
+     <span class="badge badge-pill badge-info">training</span>   <i class="fa fa-graduation-cap"></i> <a href="{% url 'training_detail' training.pk %}" data-toggle="tooltip" title="Training Details"> {{ training.title|truncatewords:3 }}</a>
+            <br>
+
+           <span class="badge badge-pill badge-dark">trainer</span> <i class="fas fa-chalkboard-teacher"></i> {{ training.schedule_by }}
+            <br>
+            <span class="badge badge-pill badge-secondary">time</span> <i class="fa fa-calendar"></i> {{ training.schedule_time }}
+            <hr>
+            {% empty %}
+            <span class="badge badge-pill badge-warning"> No Training Yet</span>
+        {% endfor %}
+
+        </div>
+</div>
+<div class="col-sm-4">
+    <div class="row-col-4">
+        <h4> <span class="badge badge-pill badge-info">Meetings</span></h4>
 <hr>
 
 {% for meeting in meetings %}
@@ -124,8 +126,14 @@
     <span class="badge badge-pill badge-warning"> No Meeting Yet</span>
     {% endfor %}
 
+    </div>
+
 </div>
+
 </div>
+
+
+
 
 
 

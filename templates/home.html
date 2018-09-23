@@ -2,11 +2,18 @@
 
 {% block body %}
     <hr>
-  <strong>Welcome to Human Resource and Job Management</strong>
+    <div class="alert alert-info">
+  <strong>Welcome </strong> to Human Resource and Job Management
+</div>
+
     <hr>
   <p class="lead">
-    If you already have an account, go ahead and <a href="{% url 'login' %}">log in</a>. If you are new to Human Resource and Job Management system , get started
-    by creating a <a href="{% url 'signup' %}"> account</a>
+    If you already have an account, go ahead and
+
+      <a href="{% url 'login' %}" class="alert-link">log in</a>.
+
+      If you are new to Human Resource and Job Management system , get started
+    by creating a <a href="{% url 'signup' %}" class="alert-link"> account</a>
   </p>
 
 

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="col-sm-9">
+
     <div class="row-col-9">
         <h3>Edit Task</h3>
 <form method="post" novalidate>
@@ -11,7 +11,7 @@
 <a href="{% url 'task_detail' task.pk %}" class="btn btn-outline-dark btn-sm" role="button">Not Now</a>
 </form>
     </div>
-    </div>
+
 
 
 {% endblock %}

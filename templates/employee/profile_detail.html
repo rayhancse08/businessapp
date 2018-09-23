@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="row-col-9">
+
+
+        <h4>Profile</h4>
+        <hr>
+       <i class="fa fa-user-circle-o"></i> {{ profile.name }}
+        <hr>
+       <i class="fa fa-mobile-phone"></i> {{ profile.phone }}
+        <hr>
+        <i class="fa fa-envelope-square"></i> {{ profile.email }}
+        <hr>
+        <i class="fa fa-tasks"></i> {{ profile.designation }}
+        <hr>
+        <i class="fa fa-building-o"></i> {{ profile.department }}
+        <hr>
+      <i class="fa fa-birthday-cake"></i>  {{ profile.date_of_birth }}
+
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

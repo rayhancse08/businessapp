@@ -2,9 +2,10 @@
 
 {% block content %}
 
-<div class="col-sm-5">
-<div class="row-col-5">
-<h4>Participate Meeting</h4>
+    <div class="row">
+    <div class="col-sm-6">
+        <div class="row-col-6">
+            <h4>Participate Meeting</h4>
     <hr>
     {% for meeting in meeting_participates %}
      <i class="fa fa-graduation-cap"></i> {{ meeting.title }}
@@ -18,13 +19,12 @@
         {% empty %}
         No Participate Meeting Yet.
     {% endfor %}
-</div>
-</div>
-
-    <div class="col-sm-4">
-<div class="row-col-4">
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="row-col-6">
 <h4>Arrange Meeting</h4>
-<a href="{% url 'create_meeting' %}" class="btn btn-success btn-sm" role="button">Arrange Meeting</a>
+<a href="{% url 'create_meeting' %}" class="btn btn-success btn-sm" role="button"><i class=" fa fa-plus-circle"></i> Arrange Meeting</a>
     <hr>
     {% for meeting in meeting_arrangements %}
      <i class="fa fa-graduation-cap"></i> {{ meeting.title }} <a href="{% url 'delete_meeting' meeting.pk %}"><i class="fa fa-trash"></i> </a>
@@ -40,6 +40,10 @@
         {% empty %}
         No Meeting Arrange  Yet
     {% endfor %}
-</div>
-</div>
+        </div>
+    </div>
+    </div>
+
+
+
 {% endblock %}

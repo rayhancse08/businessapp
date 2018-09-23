@@ -2,9 +2,10 @@
 
 
 {% block content %}
-<div class="col-sm-5">
-<div class="row-col-5">
-    <h4>Received Announcement</h4>
+    <div class="row">
+    <div class="col-sm-6">
+        <div class="row-col-6">
+            <h4>Received Announcement</h4>
 <hr>
     {% for announcemet in received_announcements %}
      <i class="fa fa-bullhorn"></i> {{ announcemet.title }}
@@ -18,13 +19,14 @@
        {% empty %}
         No Received Announcement Yet
     {% endfor %}
-</div>
-</div>
+        </div>
 
-    <div class="col-sm-4">
-<div class="row-col-4">
-    <h4>Sent Announcement</h4>
-<a href="{% url 'create_announcement'%}" class="btn btn-success btn-sm" role="button">Create Announcement</a>
+    </div>
+
+      <div class="col-sm-6">
+        <div class="row-col-6">
+<h4>Sent Announcement</h4>
+<a href="{% url 'create_announcement'%}" class="btn btn-success btn-sm" role="button"><i class="fa fa-plus-circle"></i> Create Announcement</a>
 <hr>
     {% for announcement in sent_announcements %}
      <i class="fa fa-bullhorn"></i> {{ announcement.title }}
@@ -41,7 +43,11 @@
 {% empty %}
         No Announcement Sent Yet.
     {% endfor %}
-</div>
-</div>
+        </div>
+    </div>
+
+    </div>
+
+
 
 {% endblock %}

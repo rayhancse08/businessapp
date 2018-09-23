@@ -9,6 +9,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from datetime import datetime, timedelta
+from .filters import EmployeeFilter
 # Create your views here.
 
 def home(request):
@@ -46,7 +47,7 @@ class EmployeeProfile(CreateView):
         profile.designation=form.cleaned_data['designation']
         profile.save()
         return redirect('home')
-
+'''
 @method_decorator(login_required,name='dispatch')
 class EmployeeListView(ListView):
     model = Employee
@@ -55,6 +56,21 @@ class EmployeeListView(ListView):
 
     def get_queryset(self):
         return Employee.objects.exclude(user=self.request.user)
+
+    def get_context_data(self,request,*args,**kwargs):
+        context=super().get_context_data(request,*args,**kwargs)
+        user_list = Employee.objects.all()
+        user_filter = EmployeeFilter(request.GET, queryset=user_list)
+        context['user_filter']=user_filter
+        return context
+'''
+
+@login_required
+def search(request):
+    employee_list = Employee.objects.exclude(user=request.user)
+    employee_filter = EmployeeFilter(request.GET, queryset=employee_list)  # call UserFilter from filters.py
+    return render(request, 'employee/employee_list.html', {'employees': employee_filter})
+
 
 @method_decorator(login_required,name='dispatch')
 class HomeView(TemplateView):
@@ -74,6 +90,18 @@ class HomeView(TemplateView):
         context['trainings']=context['profile'].schedule_to.filter(schedule_time__gte=datetime.today(),schedule_time__lte=one_week_after)
         context['meetings'] = context['profile'].arranged_for.filter(meeting_time__gte=datetime.today(),meeting_time__lte=one_week_after)
         return context
+
+
+@method_decorator(login_required,name='dispatch')
+class ProfileDetailView(TemplateView):
+    template_name = 'employee/profile_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context['profile'] = get_object_or_404(Employee, user=self.request.user)
+        return context
+
+
 
 
 @method_decorator(login_required,name='dispatch')
